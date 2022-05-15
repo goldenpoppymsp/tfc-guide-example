@@ -1,28 +1,14 @@
-provider "aws" {
-  region = var.region
+terraform {
+  required_providers {
+    proxmox = {
+      source = "Telmate/proxmox"
+      version = "2.9.10"
+    }
+  }
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "ubuntu" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-
-  tags = {
-    Name = var.instance_name
-  }
+provider "proxmox" {
+ pm_api_url = "https://kankuro.goldenpoppymsp.com:8006/api2/json"
+ pm_api_token_id = "${proxmox_api_token_id}"
+ pm_api_token_secret = "${proxmox_api_secret}"
 }
