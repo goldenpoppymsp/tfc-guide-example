@@ -9,8 +9,8 @@ terraform {
 
 provider "proxmox" {
  pm_api_url = "https://kankuro.goldenpoppymsp.com:8006/api2/json"
- pm_api_token_id = "${proxmox_api_token_id}"
- pm_api_token_secret = "${proxmox_api_secret}"
+ pm_api_token_id = var.proxmox_api_token_id
+ pm_api_token_secret = var.proxmox_api_secret
 }
 
 resource "proxmox_vm_qemu" "iac_server" {
