@@ -1,15 +1,9 @@
-variable "region" {
-  description = "AWS region"
-  default     = "us-west-1"
+variable "proxmox_api_secret" {
+  description = "API Token secret for proxmox"
+  type     = "string"
 }
 
-variable "instance_type" {
-  description = "Type of EC2 instance to provision"
-  default     = "t2.micro"
+variable "proxmox_api_token_id" {
+  description = "API Token ID for proxmox"
+  type     = "string"
 }
-
-variable "instance_name" {
-  description = "EC2 instance name"
-  default     = "Provisioned by Terraform"
-}
-
