@@ -14,7 +14,7 @@ provider "proxmox" {
 }
 
 resource "proxmox_vm_qemu" "iac_server" {
-  name        = "iac_server_${count.index + 1}"
+  name        = "iac_server"
   target_node = "kankuro"
   clone       = "OL8-Template"
   full_clone = "true"
